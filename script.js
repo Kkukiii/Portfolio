@@ -124,7 +124,7 @@ const SERVICE_ID = "service_kz71xyy";
 const TEMPLATE_ID = "template_v6luyfm";
 
 // Initialize only if keys are provided
-if (PUBLIC_KEY && PUBLIC_KEY !== "YOUR_PUBLIC_KEY") {
+if (PUBLIC_KEY && PUBLIC_KEY !== "_ofT5XhEZ_aDX8s1t") {
   emailjs.init(PUBLIC_KEY);
 }
 
@@ -139,7 +139,7 @@ if (contactForm) {
     e.preventDefault();
 
     // Check if Email.js is configured
-    if (!PUBLIC_KEY || PUBLIC_KEY === "YOUR_PUBLIC_KEY") {
+    if (!PUBLIC_KEY || PUBLIC_KEY === "_ofT5XhEZ_aDX8s1t") {
       formStatus.textContent = "❌ Email.js is not configured. Please set up your credentials in script.js";
       formStatus.classList.add("error");
       return;
