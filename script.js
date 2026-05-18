@@ -151,7 +151,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
  */
 
 const PUBLIC_KEY = "_ofT5XhEZ_aDX8s1t";
-const SERVICE_ID = "service_kz71xyy";
+const SERVICE_ID = "service_g6birtl";
 const TEMPLATE_ID = "template_v6luyfm";
 
 emailjs.init(PUBLIC_KEY);
