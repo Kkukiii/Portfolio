@@ -154,67 +154,49 @@ const PUBLIC_KEY = "_ofT5XhEZ_aDX8s1t";
 const SERVICE_ID = "service_kz71xyy";
 const TEMPLATE_ID = "template_v6luyfm";
 
-/**
- * Initialize EmailJS
- */
 emailjs.init(PUBLIC_KEY);
-
-/**
- * ===============================
- * Contact Form Handler
- * ===============================
- */
 
 const contactForm = document.getElementById("contact-form");
 const formStatus = document.getElementById("form-status");
 
-if (contactForm) {
-  contactForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
+contactForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    const submitBtn = contactForm.querySelector(".submit-btn");
+  const submitBtn = document.querySelector(".submit-btn");
 
-    // Disable Button
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Sending...";
+  submitBtn.disabled = true;
+  submitBtn.innerText = "Sending...";
 
-    // Reset Status
-    formStatus.textContent = "";
-    formStatus.classList.remove("success", "error");
+  formStatus.innerHTML = "";
 
-    try {
-      /**
-       * Send Email
-       */
-      const response = await emailjs.sendForm(
-        SERVICE_ID,
-        TEMPLATE_ID,
-        contactForm
-      );
+  try {
 
-      console.log("Email Sent Successfully:", response);
+    const response = await emailjs.sendForm(
+      SERVICE_ID,
+      TEMPLATE_ID,
+      contactForm
+    );
 
-      // Success Message
-      formStatus.textContent =
-        "✅ Message sent successfully! I'll get back to you soon.";
+    console.log("SUCCESS:", response);
 
-      formStatus.classList.add("success");
+    formStatus.innerHTML =
+      "✅ Email Sent Successfully";
 
-      // Reset Form
-      contactForm.reset();
+    formStatus.style.color = "lime";
 
-    } catch (error) {
-      console.error("EmailJS Error:", error);
+    contactForm.reset();
 
-      // Error Message
-      formStatus.textContent =
-        "❌ Failed to send message. Please try again later.";
+  } catch (error) {
 
-      formStatus.classList.add("error");
-    } finally {
-      // Enable Button Again
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Send Message";
-    }
-  });
+    console.error("FULL ERROR:", error);
+
+    formStatus.innerHTML =
+      "❌ " + (error.text || error.message || "Email Failed");
+
+    formStatus.style.color = "red";
+  }
+
+  submitBtn.disabled = false;
+  submitBtn.innerText = "Send Message";
+});
 }
