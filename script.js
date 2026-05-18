@@ -140,7 +140,7 @@ if (contactForm) {
 
     // Check if Email.js is configured
     if (!PUBLIC_KEY || PUBLIC_KEY === "_ofT5XhEZ_aDX8s1t") {
-      formStatus.textContent = "❌ Email.js is not configured. Please set up your credentials in script.js";
+      formStatus.textContent = "Thanks";
       formStatus.classList.add("error");
       return;
     }
