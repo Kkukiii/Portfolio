@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Journey into Web Development | Jyoti Kumari</title>
+  <meta name="description" content="Read about Jyoti Kumari's learning, creativity, and growth through coding and web development. From initial curiosity to building real projects like GreenKart." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root {
+      --accent-color: #f97316;
+      --accent-secondary: #4f46e5;
+      --sidebar-width: 280px;
+      --app-bg: #f8fafc;
+    }
+
+    body {
+      background-color: var(--app-bg);
+      background-image: 
+        radial-gradient(at 0% 0%, hsla(20,100%,98%,1) 0, transparent 50%), 
+        radial-gradient(at 100% 0%, hsla(230,100%,99%,1) 0, transparent 50%);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* TOP BAR - App Style */
+    .app-header {
+      height: 90px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(30px);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .app-logo {
+      font-weight: 900;
+      font-size: 1.6rem;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: -1px;
+    }
+
+    .app-logo span { color: var(--accent-color); }
+
+    /* MAIN APP LAYOUT */
+    .app-layout {
+      display: flex;
+      flex: 1;
+      padding: 1.5rem 3rem;
+      gap: 2.5rem;
+      max-width: 1600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* STICKY SIDEBAR */
+    .app-sidebar {
+      width: var(--sidebar-width);
+      position: sticky;
+      top: 120px;
+      height: calc(100vh - 160px);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .sidebar-nav {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 2rem;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sidebar-nav a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 1rem 1.5rem;
+      border-radius: 1.2rem;
+      font-weight: 700;
+      color: var(--secondary-color);
+      transition: var(--transition);
+      margin-bottom: 0.5rem;
+    }
+
+    .sidebar-nav a:hover, .sidebar-nav a.active {
+      background: rgba(249, 115, 22, 0.1);
+      color: var(--accent-color);
+    }
+
+    /* MAIN CONTENT AREA */
+    .app-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    /* APP MODULES (Cards) */
+    .app-module {
+      background: var(--white);
+      border-radius: 2rem;
+      padding: 2.5rem 3rem;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      margin-bottom: 0;
+    }
+
+    .app-module:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    /* TOP STATS ROW */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .stat-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 2rem;
+      border: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .stat-card span:first-child {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-light);
+      font-weight: 800;
+    }
+
+    .stat-card span:last-child {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--primary-color);
+    }
+
+    /* TYPOGRAPHY */
+    .app-module h1, .app-module h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 2rem;
+      letter-spacing: -2px;
+    }
+
+    .app-module p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--secondary-color);
+      margin-bottom: 1.5rem;
+    }
+
+    /* BLOCKQUOTE */
+    .quote-box {
+      background: rgba(249, 115, 22, 0.05);
+      border-left: 5px solid var(--accent-color);
+      border-radius: 0 1.5rem 1.5rem 0;
+      padding: 2rem;
+      margin: 2rem 0;
+      font-size: 1.4rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--primary-color);
+      line-height: 1.6;
+    }
+
+    /* GRID LAYOUTS */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .feature-item {
+      background: var(--section-bg);
+      padding: 1.5rem 2rem;
+      border-radius: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-weight: 800;
+      color: var(--primary-color);
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .feature-item:hover {
+      border-color: var(--accent-color);
+      transform: translateY(-2px);
+    }
+
+    .feature-item i {
+      width: 10px;
+      height: 10px;
+      background: var(--accent-color);
+      border-radius: 50%;
+    }
+
+    /* STEP CARD LAYOUT */
+    .step-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .step-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 2rem;
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .step-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-color);
+      box-shadow: var(--shadow-md);
+    }
+
+    .step-icon {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-card h4 {
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--primary-color);
+    }
+
+    .step-card p {
+      font-size: 1rem !important;
+      margin-bottom: 0 !important;
+      line-height: 1.6;
+    }
+
+    /* LESSONS LIST */
+    .lessons-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .lesson-card {
+      background: var(--section-bg);
+      padding: 2rem;
+      border-radius: 1.5rem;
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .lesson-card:hover {
+      border-color: var(--accent-color);
+      background: var(--white);
+      transform: translateX(5px);
+    }
+
+    .lesson-number {
+      background: var(--accent-color);
+      color: #fff;
+      font-weight: 900;
+      font-size: 1.1rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(249, 115, 22, 0.2);
+    }
+
+    .lesson-body h4 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .lesson-body p {
+      font-size: 1.1rem !important;
+      margin-bottom: 0 !important;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1200px) {
+      .app-layout { flex-direction: column; padding: 2rem; }
+      .app-sidebar { position: static; width: 100%; height: auto; }
+      .sidebar-nav { display: flex; overflow-x: auto; gap: 1rem; }
+      .sidebar-nav a { white-space: nowrap; margin-bottom: 0; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .step-card-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .app-header { padding: 0 2rem; }
+      .app-module { padding: 2.5rem; }
+      .stats-row { grid-template-columns: 1fr; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .app-module h2 { font-size: 2rem; }
+      .lesson-card { flex-direction: column; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="app-logo"><span>Jyoti</span> Kumari</div>
+    <div style="display: flex; gap: 1.5rem;">
+      <a href="index.html" class="btn btn-outline" style="padding: 0.8rem 1.5rem; border-radius: 1rem;">Back to Portfolio</a>
+    </div>
+  </header>
+
+  <main class="app-layout">
+    <!-- Sticky Sidebar -->
+    <aside class="app-sidebar">
+      <div class="sidebar-nav">
+        <a href="#overview" class="active">📊 Overview</a>
+        <a href="#beginning">✨ The Beginning</a>
+        <a href="#fundamentals">📚 Fundamentals</a>
+        <a href="#challenges">⚠️ Challenges</a>
+        <a href="#projects">🛠️ Building Projects</a>
+        <a href="#lessons">💡 Key Lessons</a>
+        <a href="#ahead">🔮 Looking Ahead</a>
+      </div>
+      
+      <div class="sidebar-nav" style="margin-top: auto;">
+        <p style="font-size: 0.8rem; font-weight: 800; color: var(--text-light); text-align: center;">✍ Author: Jyoti Kumari</p>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="app-content">
+      
+      <!-- Stats Summary -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <span>Author</span>
+          <span>Jyoti Kumari</span>
+        </div>
+        <div class="stat-card">
+          <span>Topic</span>
+          <span>Web Development</span>
+        </div>
+        <div class="stat-card">
+          <span>Focus</span>
+          <span>Frontend & UI/UX</span>
+        </div>
+        <div class="stat-card">
+          <span>Goal</span>
+          <span>Professional Builder</span>
+        </div>
+      </div>
+
+      <!-- Overview Module -->
+      <section id="overview" class="app-module">
+        <h1>My Journey into Web Development: From Curiosity to Building Real Projects</h1>
+        <p>A journey of learning, creativity, and growth through coding and web development.</p>
+        
+        <p>Web development was never something I planned to pursue from the beginning. Like many students, I started with simple curiosity. I often wondered how websites worked, how buttons responded when clicked, and how visually appealing pages were created on the internet.</p>
+        <p>What started as curiosity slowly turned into interest, and eventually became a passion for building websites and learning new technologies.</p>
+        
+        <div class="quote-box">
+          “Every expert was once a beginner who refused to give up.”
+        </div>
+      </section>
+
+      <!-- Beginning Module -->
+      <section id="beginning" class="app-module">
+        <h2>The Beginning: Curiosity About Websites</h2>
+        <p>My interest in web development began when I explored different websites and wondered how they were built. I became fascinated by website layouts, animations, and interactive elements.</p>
+        <p>At first, coding looked difficult and confusing. Terms like HTML, CSS, and JavaScript felt overwhelming. However, instead of feeling discouraged, I became even more curious to understand how everything worked behind the scenes.</p>
+      </section>
+
+      <!-- Fundamentals Module -->
+      <section id="fundamentals" class="app-module">
+        <h2>Learning the Fundamentals</h2>
+        <p>The first step in my journey was learning HTML, the foundation of every website. I learned how to structure web pages using headings, paragraphs, images, links, and forms.</p>
+        <p>After HTML, I explored CSS, which helped me design beautiful and responsive webpages. Styling websites with colors, spacing, and layouts made web development much more exciting.</p>
+        <p>Then came JavaScript, which introduced me to the interactive side of web development. It allowed me to create buttons, dynamic features, and engaging user experiences.</p>
+        
+        <div class="step-card-grid">
+          <div class="step-card">
+            <div class="step-icon">📄</div>
+            <h4>HTML</h4>
+            <p>The skeleton of every page, defining tags, structure, and essential contents.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-icon">🎨</div>
+            <h4>CSS</h4>
+            <p>The design, styling layouts, colors, flexbox, grids, and responsiveness.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-icon">⚙️</div>
+            <h4>JavaScript</h4>
+            <p>The brain, providing user interaction, logic, dynamics, and responsiveness.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Challenges Module -->
+      <section id="challenges" class="app-module">
+        <h2>Challenges Along the Way</h2>
+        <p>Learning web development was not always easy. There were moments when coding errors felt frustrating and fixing bugs became time-consuming.</p>
+        <p>Balancing studies while learning development was also challenging. However, consistency and regular practice helped me improve gradually.</p>
+      </section>
+
+      <!-- Projects Module -->
+      <section id="projects" class="app-module">
+        <h2>From Learning to Building Real Projects</h2>
+        <p>One of the most exciting moments in my journey was moving from learning theory to building actual projects.</p>
+        <p>Working on projects helped me gain confidence and practical experience. One of the major projects I developed is <strong>GreenKart</strong>, an eco-friendly e-commerce website.</p>
+        
+        <p style="font-weight: 800; color: var(--primary-color); margin-top: 2rem;">Key competencies developed through project building:</p>
+        <div class="feature-grid">
+          <div class="feature-item"><i></i> Responsive Web Design</div>
+          <div class="feature-item"><i></i> Frontend Development Skills</div>
+          <div class="feature-item"><i></i> UI/UX Improvement</div>
+          <div class="feature-item"><i></i> Problem Solving</div>
+          <div class="feature-item"><i></i> Project Building Confidence</div>
+        </div>
+      </section>
+
+      <!-- Lessons Learned Module -->
+      <section id="lessons" class="app-module">
+        <h2>What Web Development Has Taught Me</h2>
+        <p>Web development has taught me much more than coding. It has helped me improve patience, creativity, and problem-solving skills.</p>
+        
+        <div class="lessons-list">
+          <div class="lesson-card">
+            <div class="lesson-number">1</div>
+            <div class="lesson-body">
+              <h4>Consistency matters more than perfection</h4>
+              <p>Habits and persistent daily effort build solid, dependable engineering skills over time.</p>
+            </div>
+          </div>
+          <div class="lesson-card">
+            <div class="lesson-number">2</div>
+            <div class="lesson-body">
+              <h4>Mistakes are opportunities to learn</h4>
+              <p>Bugs are not failures, but rather learning points that make you understand details better.</p>
+            </div>
+          </div>
+          <div class="lesson-card">
+            <div class="lesson-number">3</div>
+            <div class="lesson-body">
+              <h4>Projects improve skills faster than theory</h4>
+              <p>Building real applications bridges the gap between passive learning and true engineering.</p>
+            </div>
+          </div>
+          <div class="lesson-card">
+            <div class="lesson-number">4</div>
+            <div class="lesson-body">
+              <h4>Growth happens step by step</h4>
+              <p>Patience and persistent dedication lead to steady and continuous long-term progress.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Looking Ahead Module -->
+      <section id="ahead" class="app-module">
+        <h2>Looking Ahead</h2>
+        <p>I still consider myself a learner because technology changes every day. My goal is to continue improving my frontend development skills and build more professional, user-friendly websites.</p>
+        
+        <div class="quote-box" style="margin-top: 2rem;">
+          “This journey started with curiosity, but today it has become my passion.”
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-logo">Jyoti Kumari</div>
+    <ul class="footer-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#skills">Skills</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#certificates">Certificates</a></li>
+      <li><a href="index.html#blog">Blog</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <p class="footer-copyright">Copyright &#169; 2025 Jyoti Kumari. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Smooth scroll and active link tracking
+    document.querySelectorAll('.sidebar-nav a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+        document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Handle scroll to highlight active sidebar item
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const sections = document.querySelectorAll('.app-module');
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      document.querySelectorAll('.sidebar-nav a').forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href') === `#${current}`) {
+          a.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

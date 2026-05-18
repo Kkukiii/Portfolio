@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreenKart Showcase | Full Application Breakdown</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root {
+      --accent-color: #00b894;
+      --accent-secondary: #55efc4;
+      --sidebar-width: 280px;
+      --app-bg: #f8fafc;
+    }
+
+    body {
+      background-color: var(--app-bg);
+      background-image: 
+        radial-gradient(at 0% 0%, hsla(160,100%,98%,1) 0, transparent 50%), 
+        radial-gradient(at 100% 0%, hsla(150,100%,99%,1) 0, transparent 50%);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* TOP BAR - App Style */
+    .app-header {
+      height: 90px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(30px);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .app-logo {
+      font-weight: 900;
+      font-size: 1.6rem;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: -1px;
+    }
+
+    .app-logo span { color: var(--accent-color); }
+
+    /* MAIN APP LAYOUT */
+    .app-layout {
+      display: flex;
+      flex: 1;
+      padding: 1.5rem 3rem;
+      gap: 2.5rem;
+      max-width: 1600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* STICKY SIDEBAR */
+    .app-sidebar {
+      width: var(--sidebar-width);
+      position: sticky;
+      top: 120px;
+      height: calc(100vh - 160px);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .sidebar-nav {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 2rem;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sidebar-nav a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 1rem 1.5rem;
+      border-radius: 1.2rem;
+      font-weight: 700;
+      color: var(--secondary-color);
+      transition: var(--transition);
+      margin-bottom: 0.5rem;
+    }
+
+    .sidebar-nav a:hover, .sidebar-nav a.active {
+      background: rgba(0, 184, 148, 0.1);
+      color: var(--accent-color);
+    }
+
+    /* MAIN CONTENT AREA */
+    .app-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    /* APP MODULES (Cards) */
+    .app-module {
+      background: var(--white);
+      border-radius: 2rem;
+      padding: 2.5rem 3rem;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      margin-bottom: 0;
+    }
+
+    .app-module:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    /* TOP STATS ROW */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .stat-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 2rem;
+      border: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .stat-card span:first-child {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-light);
+      font-weight: 800;
+    }
+
+    .stat-card span:last-child {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--primary-color);
+    }
+
+    /* TYPOGRAPHY */
+    .app-module h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 2rem;
+      letter-spacing: -2px;
+    }
+
+    .app-module p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--secondary-color);
+      margin-bottom: 1.5rem;
+    }
+
+    /* TECH GRID */
+    .tech-stack-app {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .tech-item-app {
+      background: var(--section-bg);
+      padding: 1.5rem 2rem;
+      border-radius: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-weight: 800;
+      color: var(--primary-color);
+    }
+
+    .tech-item-app i {
+      width: 10px;
+      height: 10px;
+      background: var(--accent-color);
+      border-radius: 50%;
+    }
+
+    /* BUTTONS */
+    .app-btn-primary {
+      background: var(--accent-color);
+      color: #fff;
+      padding: 1.2rem 3rem;
+      border-radius: 1.2rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 20px rgba(0, 184, 148, 0.2);
+    }
+
+    .app-btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0, 184, 148, 0.3);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1200px) {
+      .app-layout { flex-direction: column; padding: 2rem; }
+      .app-sidebar { position: static; width: 100%; height: auto; }
+      .sidebar-nav { display: flex; overflow-x: auto; gap: 1rem; }
+      .sidebar-nav a { white-space: nowrap; margin-bottom: 0; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* SNAPSHOTS - High Tech */
+    .snapshot-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 4rem 0;
+    }
+
+    .snapshot-card {
+      text-align: center;
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 2rem;
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .snapshot-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-color);
+    }
+
+    .snapshot-img {
+      width: 100%;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      background: var(--section-bg);
+      border-radius: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .snapshot-card h4 {
+      font-weight: 800;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .snapshot-card p {
+      font-size: 0.95rem !important;
+      margin-bottom: 0 !important;
+      font-weight: 600;
+    }
+
+    /* CTA Section - Final Launch */
+    .cta-section {
+      text-align: center;
+      padding: 6rem 3rem;
+      background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+      border-radius: 3rem;
+      color: #fff;
+      margin-top: 6rem;
+      box-shadow: 0 40px 100px -20px rgba(0, 184, 148, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .cta-logo-img {
+      width: 80px;
+      height: auto;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+    }
+
+    .cta-section h2 { 
+      font-size: 3.8rem; 
+      font-weight: 950;
+      margin-bottom: 0.5rem; 
+      letter-spacing: -3px;
+      color: #fff;
+    }
+
+    .cta-section p { 
+      font-size: 1.6rem; 
+      opacity: 0.95; 
+      margin-bottom: 1.5rem; 
+      font-weight: 600;
+      color: #fff;
+      max-width: 700px;
+    }
+
+    .btn-white {
+      background: #fff;
+      color: var(--accent-color);
+      padding: 1.8rem 5rem;
+      border-radius: 100px;
+      font-weight: 950;
+      font-size: 1.4rem;
+      display: inline-block;
+      transition: var(--transition);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    @media (max-width: 768px) {
+      .app-header { padding: 0 2rem; }
+      .app-module { padding: 2.5rem; }
+      .stats-row { grid-template-columns: 1fr; }
+      .tech-stack-app { grid-template-columns: 1fr; }
+      .app-module h2 { font-size: 2rem; }
+      .snapshot-grid { grid-template-columns: 1fr; }
+      .cta-section h2 { font-size: 2.5rem; }
+      .btn-white { padding: 1.2rem 3rem; font-size: 1.1rem; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="app-logo"><span>Green</span>Kart Project</div>
+    <div style="display: flex; gap: 1.5rem;">
+      <a href="index.html" class="btn btn-outline" style="padding: 0.8rem 1.5rem; border-radius: 1rem;">Exit Showcase</a>
+      <a href="https://green-kart-mu.vercel.app/" target="_blank" class="app-btn-primary" style="padding: 0.8rem 1.5rem; border-radius: 1rem;">Launch Live App 🚀</a>
+    </div>
+  </header>
+
+  <main class="app-layout">
+    <!-- Sticky Sidebar -->
+    <aside class="app-sidebar">
+      <div class="sidebar-nav">
+        <a href="#overview" class="active">📊 Overview</a>
+        <a href="#planning">📝 Planning</a>
+        <a href="#tech">💻 Tech Stack</a>
+        <a href="#features">✨ Main Features</a>
+        <a href="#snapshots">📷 Snapshots</a>
+        <a href="#challenges">🚀 Challenges</a>
+      </div>
+      
+      <div class="sidebar-nav" style="margin-top: auto;">
+        <p style="font-size: 0.8rem; font-weight: 800; color: var(--text-light); text-align: center;">Project ID: GK-2025-JK</p>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="app-content">
+      
+      <!-- Stats Summary -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <span>Role</span>
+          <span>Lead Developer</span>
+        </div>
+        <div class="stat-card">
+          <span>Duration</span>
+          <span>4 Weeks</span>
+        </div>
+        <div class="stat-card">
+          <span>Platform</span>
+          <span>Vercel / Web</span>
+        </div>
+        <div class="stat-card">
+          <span>Status</span>
+          <span style="color: var(--accent-color);">● Fully Live</span>
+        </div>
+      </div>
+
+      <!-- Overview Module -->
+      <section id="overview" class="app-module">
+        <h2>Project Overview</h2>
+        <p>GreenKart is an industry-grade e-commerce application designed with a focus on sustainability and user efficiency. The objective was to create a professional shopping experience that combines high performance with a clean, eco-friendly aesthetic.</p>
+        <p>Unlike basic educational projects, GreenKart was architected to handle complex user flows including dynamic cart management, interactive product filtering, and a secure-feeling checkout simulation.</p>
+      </section>
+
+      <!-- Planning Module -->
+      <section id="planning" class="app-module">
+        <h2>Strategic Planning</h2>
+        <p>The development lifecycle followed a strict modular approach to ensure scalability and maintainable code.</p>
+        <div class="tech-stack-app">
+          <div class="tech-item-app"><i></i> User Flow Optimization</div>
+          <div class="tech-item-app"><i></i> Component Architecture</div>
+          <div class="tech-item-app"><i></i> Responsive Grid Logic</div>
+          <div class="tech-item-app"><i></i> Global State Management</div>
+        </div>
+      </section>
+
+      <!-- Tech Stack Module -->
+      <section id="tech" class="app-module">
+        <h2>Core Technologies</h2>
+        <p>Built using a modern frontend stack optimized for speed and SEO.</p>
+        <div class="tech-stack-app">
+          <div class="tech-item-app">HTML5 (Semantic)</div>
+          <div class="tech-item-app">CSS3 (Flex/Grid)</div>
+          <div class="tech-item-app">JavaScript (ES6+)</div>
+          <div class="tech-item-app">Vercel (CI/CD)</div>
+        </div>
+      </section>
+
+      <!-- Features Module -->
+      <section id="features" class="app-module">
+        <h2>Application Features</h2>
+        <div class="tech-stack-app">
+          <div class="tech-item-app">📊 Dynamic Dashboard</div>
+          <div class="tech-item-app">🛒 Smart Shopping Cart</div>
+          <div class="tech-item-app">❤️ Wishlist Integration</div>
+          <div class="tech-item-app">📱 Multi-Device Support</div>
+          <div class="tech-item-app">🔍 Advanced Product Search</div>
+          <div class="tech-item-app">🔐 Authentication Simulation</div>
+        </div>
+      </section>
+
+      <!-- Development Snapshots Module -->
+      <section id="snapshots" class="app-module">
+        <h2>Development Snapshots</h2>
+        <p>A look into the core architecture and logic implementation phases of GreenKart.</p>
+        <div class="snapshot-grid">
+          <div class="snapshot-card">
+            <div class="snapshot-img">📄</div>
+            <h4>Core Structure</h4>
+            <p>HTML Semantics</p>
+          </div>
+          <div class="snapshot-card">
+            <div class="snapshot-img">🎨</div>
+            <h4>Styling & Layout</h4>
+            <p>CSS Responsiveness</p>
+          </div>
+          <div class="snapshot-card">
+            <div class="snapshot-img">⚙️</div>
+            <h4>Logic & Functions</h4>
+            <p>JS Interactivity</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Challenges Module -->
+      <section id="challenges" class="app-module">
+        <h2>Development Challenges</h2>
+        <p>The primary challenge was implementing a seamless responsive experience across diverse device resolutions. Managing complex CSS grid layouts for product catalogs required extensive cross-browser testing and optimization.</p>
+        <p>Additionally, keeping the navigation flow intuitive while managing multiple sub-pages (Cart, Checkout, Account) provided significant insights into professional UI/UX design patterns.</p>
+      </section>
+
+      <!-- Final CTA -->
+      <div class="cta-section">
+        <h2>Experience the Application</h2>
+        <p>Launch the live deployment of GreenKart and explore the full functional journey.</p>
+        <a href="https://green-kart-mu.vercel.app/" target="_blank" class="btn-white">🚀 Launch Live Demo</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-logo">Jyoti Kumari</div>
+    <ul class="footer-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#skills">Skills</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#certificates">Certificates</a></li>
+      <li><a href="index.html#blog">Blog</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <p class="footer-copyright">Copyright &#169; 2025 Jyoti Kumari. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Smooth scroll and active link tracking
+    document.querySelectorAll('.sidebar-nav a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+        document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

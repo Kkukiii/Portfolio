@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jyoti Kumari | Web Developer Portfolio</title>
+  <meta name="description"
+    content="Portfolio of Jyoti Kumari, a passionate Web Developer specializing in front-end technologies." />
+  <link rel="stylesheet" href="style.css?v=1.0.1" />
+  <!-- Email.js Library -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
+</head>
+
+<body>
+  <!-- Animated Background Blobs -->
+  <div class="blob-container">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- Floating Geometric & Tech Objects Background -->
+  <div class="floating-objects-container">
+    <div class="floating-object-wrapper wrapper-1">
+      <div class="floating-object">{}</div>
+    </div>
+    <div class="floating-object-wrapper wrapper-2">
+      <div class="floating-object">&lt;/&gt;</div>
+    </div>
+    <div class="floating-object-wrapper wrapper-3">
+      <div class="floating-object">[]</div>
+    </div>
+    <div class="floating-object-wrapper wrapper-4">
+      <div class="floating-object">()</div>
+    </div>
+    <div class="floating-object-wrapper wrapper-5">
+      <div class="floating-object">&lt;div&gt;</div>
+    </div>
+    <div class="floating-object-wrapper wrapper-6">
+      <div class="floating-object">#</div>
+    </div>
+    <div class="floating-object-wrapper wrapper-7">
+      <div class="floating-object">*</div>
+    </div>
+    <div class="floating-object-wrapper wrapper-8">
+      <div class="floating-object">++</div>
+    </div>
+  </div>
+
+
+  <!-- Desktop Navigation -->
+  <nav id="desktop-nav">
+    <a href="#profile" class="logo">Jyoti Kumari</a>
+    <ul class="nav-links">
+      <li><a href="#profile">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hamburger Navigation -->
+  <nav id="hamburger-nav">
+    <a href="#profile" class="logo">Jyoti Kumari</a>
+    <div class="hamburger-menu">
+      <div class="hamburger-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="menu-links">
+        <li><a href="#profile" onclick="toggleMenu()">Home</a></li>
+        <li><a href="#about" onclick="toggleMenu()">About</a></li>
+        <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
+        <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+        <li><a href="#certificates" onclick="toggleMenu()">Certificates</a></li>
+        <li><a href="#blog" onclick="toggleMenu()">Blog</a></li>
+        <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- Profile Section -->
+  <section id="profile">
+    <div class="section__pic-container reveal">
+      <div class="profile-pic-wrapper">
+        <img src="Profile-picture.png" alt="Jyoti Kumari profile picture" />
+      </div>
+    </div>
+    <div class="section__text reveal">
+      <p class="section__text__p1">Hello, I'm</p>
+      <h1 class="title">Jyoti Kumari</h1>
+      <p class="section__text__p2">Web Developer & Web Designer</p>
+      <div class="btn-container">
+        <button class="btn btn-primary" onclick="window.open('resume.pdf')">Download CV</button>
+        <button class="btn btn-outline" onclick="location.href='#contact'">Contact Info</button>
+      </div>
+      <div class="socials-container">
+        <div class="social-icon-wrapper linkedin"
+          onclick="location.href='https://www.linkedin.com/in/jyotikumari1109/'">
+          <img src="linkedin.png" alt="My LinkedIn profile" class="icon" />
+        </div>
+        <div class="social-icon-wrapper github" onclick="location.href='https://github.com/Kkukiii'">
+          <img src="gitHub.png" alt="My GitHub profile" class="icon" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" style="position: relative;">
+    <div class="decor-circle"></div>
+    <span class="subtitle reveal">Get To Know More</span>
+    <h2 class="section-title reveal">About Me</h2>
+    <div class="about-content">
+      <div class="about-pic-container reveal">
+        <div class="about-pic-frame">
+          <img src="profile.jpg" alt="Profile picture" class="about-pic" />
+        </div>
+      </div>
+      <div class="about-details">
+        <div class="about-cards">
+          <div class="details-card reveal">
+            <div class="card-icon-bg">💼</div>
+            <h3>Experience</h3>
+            <p>
+              Frontend Developer<br />
+              <span style="font-size: 0.95rem; color: var(--text-light); font-weight: 500;">Intern</span>
+            </p>
+          </div>
+          <div class="details-card reveal">
+            <div class="card-icon-bg">🎓</div>
+            <h3>Education</h3>
+            <p>
+              BCA – Chandigarh University<br />
+              <span style="font-size: 0.95rem; color: var(--text-light); font-weight: 500;">Intermediate – Ganga Devi Mahila College</span>
+            </p>
+          </div>
+          <div class="details-card reveal" style="grid-column: 1 / -1;">
+            <div class="card-icon-bg">🏆</div>
+            <h3>Achievements & Leadership</h3>
+            <ul style="list-style: none; padding: 0; text-align: center; display: flex; flex-direction: column; gap: 0.5rem; align-items: center;">
+              <li style="font-size: 1.05rem; color: var(--secondary-color); font-weight: 600;"><span style="color: var(--accent-color); margin-right: 0.5rem;">•</span> Class Representative (CR) – Student-Faculty Liaison</li>
+              <li style="font-size: 1.05rem; color: var(--secondary-color); font-weight: 600;"><span style="color: var(--accent-color); margin-right: 0.5rem;">•</span> Runner-Up in Badminton (School Level)</li>
+              <li style="font-size: 1.05rem; color: var(--secondary-color); font-weight: 600;"><span style="color: var(--accent-color); margin-right: 0.5rem;">•</span> Cultural Performer – Women's Day at CU</li>
+            </ul>
+          </div>
+        </div>
+        <div class="about-text reveal">
+          <p>
+            I am <b>Jyoti Kumari</b>, a dedicated Web Developer and BCA student at Chandigarh University, driven by a
+            passion for crafting seamless, high-performance digital experiences. My expertise lies in transforming
+            complex concepts into elegant, responsive web applications using a modern stack of <b>HTML5, CSS3,
+              JavaScript, and MySQL</b>.
+          </p>
+          <p style="margin-top: 1rem;">
+            With a proven track record of developing diverse projects—ranging from eco-friendly e-commerce platforms to
+            interactive web tools—I focus on writing clean, scalable code and delivering exceptional user interfaces. I
+            am committed to continuous growth, constantly exploring emerging technologies to solve real-world challenges
+            and build the next generation of the web.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <span class="subtitle reveal">Explore My</span>
+    <h2 class="section-title reveal">Skills</h2>
+    <div class="skills-grid">
+      <div class="skills-category reveal">
+        <h3>Frontend Development</h3>
+        <div class="skills-list">
+          <article class="skill-item">
+            <img src="checkmark.png" alt="Checkmark icon" class="icon" />
+            <div class="skill-info">
+              <h4>HTML</h4>
+              <p>Experienced</p>
+            </div>
+          </article>
+          <article class="skill-item">
+            <img src="checkmark.png" alt="Checkmark icon" class="icon" />
+            <div class="skill-info">
+              <h4>CSS</h4>
+              <p>Intermediate</p>
+            </div>
+          </article>
+          <article class="skill-item">
+            <img src="checkmark.png" alt="Checkmark icon" class="icon" />
+            <div class="skill-info">
+              <h4>JavaScript</h4>
+              <p>Intermediate</p>
+            </div>
+          </article>
+          <article class="skill-item">
+            <img src="checkmark.png" alt="Checkmark icon" class="icon" />
+            <div class="skill-info">
+              <h4>Responsive Design</h4>
+              <p>Intermediate</p>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="skills-category reveal">
+        <h3>Backend & Tools</h3>
+        <div class="skills-list">
+          <article class="skill-item">
+            <img src="checkmark.png" alt="Checkmark icon" class="icon" />
+            <div class="skill-info">
+              <h4>MySQL</h4>
+              <p>Intermediate</p>
+            </div>
+          </article>
+          <article class="skill-item">
+            <img src="checkmark.png" alt="Checkmark icon" class="icon" />
+            <div class="skill-info">
+              <h4>Git & GitHub</h4>
+              <p>Intermediate</p>
+            </div>
+          </article>
+          <article class="skill-item">
+            <img src="checkmark.png" alt="Checkmark icon" class="icon" />
+            <div class="skill-info">
+              <h4>UI/UX Fundamentals</h4>
+              <p>Intermediate</p>
+            </div>
+          </article>
+          <article class="skill-item">
+            <img src="checkmark.png" alt="Checkmark icon" class="icon" />
+            <div class="skill-info">
+              <h4>C++</h4>
+              <p>Basic</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <!-- Projects Section -->
+  <section id="projects">
+    <span class="subtitle reveal">Browse My Recent</span>
+    <h2 class="section-title reveal">Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-img-wrapper">
+          <img src="project_1.png" alt="Omnifood Project" class="project-img" />
+        </div>
+        <div class="project-info">
+          <h3>Omnifood Delivery</h3>
+          <div class="btn-container">
+            <button class="btn btn-orange-outline"
+              onclick="location.href='https://github.com/Kkukiii/fooddilvery'">GitHub</button>
+            <button class="btn btn-orange" onclick="location.href='https://kkukiii.github.io/fooddilvery/'">Live
+              Demo</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-img-wrapper">
+          <img src="Logo.png" alt="GreenKart Project" class="project-img" />
+        </div>
+        <div class="project-info">
+          <h3>GreenKart E-commerce</h3>
+          <div class="btn-container">
+            <button class="btn btn-green-outline"
+              onclick="location.href='https://github.com/Kkukiii/GreenKart'">GitHub</button>
+            <button class="btn btn-green" onclick="location.href='https://green-kart-mu.vercel.app/'">Live Demo</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-img-wrapper">
+          <img src="project_2.png" alt="Panda Interactive Form Project" class="project-img" />
+        </div>
+        <div class="project-info">
+          <h3>Interactive Form</h3>
+          <div class="btn-container">
+            <button class="btn btn-yellow-outline"
+              onclick="location.href='https://github.com/Kkukiii/Panda-Interactive-Form'">GitHub</button>
+            <button class="btn btn-yellow"
+              onclick="location.href='https://kkukiii.github.io/Panda-Interactive-Form/'">Live Demo</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-img-wrapper">
+          <img src="project_3.png" alt="Stone Paper Scissors Project" class="project-img" />
+        </div>
+        <div class="project-info">
+          <h3>Stone Paper Scissors</h3>
+          <div class="btn-container">
+            <button class="btn btn-blue-outline"
+              onclick="location.href='https://github.com/Kkukiii/Stone-paper-scissors'">GitHub</button>
+            <button class="btn btn-blue" onclick="location.href='https://kkukiii.github.io/Stone-paper-scissors/'">Live
+              Demo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certificates Section -->
+  <section id="certificates">
+    <span class="subtitle reveal">Verify My Achievements</span>
+    <h2 class="section-title reveal">Certificates & Internships</h2>
+    <div class="certificates-grid">
+      <div class="certificate-card reveal">
+        <div class="certificate-icon">🐍</div>
+        <div class="certificate-info">
+          <h3>Python Programming</h3>
+          <p>Programming Fundamentals using Python - Part 1 (Infosys Wingspan)</p>
+        </div>
+        <a href="python certificate.pdf" target="_blank" class="btn btn-primary certificate-link">View Certificate</a>
+      </div>
+
+      <div class="certificate-card reveal">
+        <div class="certificate-icon">🎨</div>
+        <div class="certificate-info">
+          <h3>Front-End Development</h3>
+          <p>Introduction to Front-End Development (Meta via Coursera)</p>
+        </div>
+        <a href="Minor Project.pdf" target="_blank" class="btn btn-primary certificate-link">View Certificate</a>
+      </div>
+
+      <div class="certificate-card reveal">
+        <div class="certificate-icon">🛒</div>
+        <div class="certificate-info">
+          <h3>E-commerce Website</h3>
+          <p>Eco-Friendly E-commerce Website Template (Coursera Project)</p>
+        </div>
+        <a href="project certificate.pdf" target="_blank" class="btn btn-primary certificate-link">View Certificate</a>
+      </div>
+
+      <div class="certificate-card reveal">
+        <div class="certificate-icon">🏢</div>
+        <div class="certificate-info">
+          <h3>Technology Job Simulation</h3>
+          <p>Deloitte Technology Job Simulation (Coding & Development via Forage)</p>
+        </div>
+        <a href="Deloitte.pdf" target="_blank" class="btn btn-primary certificate-link">View Certificate</a>
+      </div>
+
+      <div class="certificate-card reveal">
+        <div class="certificate-icon">🍃</div>
+        <div class="certificate-info">
+          <h3>Environment & Waste Management</h3>
+          <p>Environmental Science, Waste, and Disaster Management (Chandigarh University via Coursera)</p>
+        </div>
+        <a href="Coursera certificate.pdf" target="_blank" class="btn btn-primary certificate-link">View Certificate</a>
+      </div>
+
+      <div class="certificate-card reveal">
+        <div class="certificate-icon">💼</div>
+        <div class="certificate-info">
+          <h3>Web Dev Internship</h3>
+          <p>Website Design & Development Internship at iStudio (Oct 2025)</p>
+        </div>
+        <a href="Jyoti Kumari - Website Design and Development Internship - Internship.pdf" target="_blank"
+          class="btn btn-primary certificate-link">View Certificate</a>
+      </div>
+
+      <div class="certificate-card reveal">
+        <div class="certificate-icon">🏫</div>
+        <div class="certificate-info">
+          <h3>Internship Training</h3>
+          <p>Training Completion Certificate from iStudio</p>
+        </div>
+        <a href="Jyoti Kumari - Website Design and Development Internship - Training.pdf" target="_blank"
+          class="btn btn-primary certificate-link">View Certificate</a>
+      </div>
+
+      <div class="certificate-card reveal">
+        <div class="certificate-icon">📝</div>
+        <div class="certificate-info">
+          <h3>Recommendation Letter</h3>
+          <p>Web Development Intern Recommendation from SkillCraft Technology</p>
+        </div>
+        <a href="Letter of Recommendation.pdf" target="_blank" class="btn btn-primary certificate-link">View
+          Document</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog">
+    <span class="subtitle reveal">Articles & Case Studies</span>
+    <h2 class="section-title reveal">My Blog & Journey</h2>
+    <div class="blog-grid">
+      <!-- Blog Card 1: GreenKart Case Study -->
+      <div class="blog-card reveal">
+        <div class="blog-content">
+          <div class="blog-img-side">
+            <img src="Logo.png" alt="GreenKart">
+          </div>
+          <div class="blog-text-side">
+            <div class="blog-meta">
+              <span>Featured Case Study</span>
+              <span>Oct 2025</span>
+            </div>
+            <h3>How I Built GreenKart: My Journey of Creating an Eco-Friendly E-commerce Website</h3>
+            <p>GreenKart is a modern, clean, and responsive e-commerce platform built to help users explore sustainable
+              products. This project represents my growth from basic HTML/CSS to building a fully functional shopping
+              experience.</p>
+            <a href="blog-greenkart.html" class="btn btn-primary blog-btn">Read Full Journey →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog Card 2: Web Dev Journey -->
+      <div class="blog-card reveal">
+        <div class="blog-content">
+          <div class="blog-img-side">
+            <img src="code1.png" alt="Web Development Journey">
+          </div>
+          <div class="blog-text-side">
+            <div class="blog-meta">
+              <span>Personal Journey</span>
+              <span>May 2026</span>
+            </div>
+            <h3>My Journey into Web Development: From Curiosity to Building Real Projects</h3>
+            <p>A journey of learning, creativity, and growth through coding and web development. Explore how simple curiosity about how websites worked turned into a passion for building professional digital experiences.</p>
+            <a href="blog-journey.html" class="btn btn-primary blog-btn">Read Full Journey →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <span class="subtitle reveal">Get in Touch</span>
+    <h2 class="section-title reveal">Contact Me</h2>
+    <div class="contact-wrapper">
+      <!-- Contact Form -->
+      <form id="contact-form" class="contact-form reveal">
+        <div class="form-group">
+          <label for="user_name">Your Name</label>
+          <input type="text" id="user_name" name="user_name" placeholder="jyoti kumari" required />
+        </div>
+
+        <div class="form-group">
+          <label for="user_email">Your Email</label>
+          <input type="email" id="user_email" name="user_email" placeholder="jyotisingh110405com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="Project Inquiry" required />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Your message here..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary submit-btn">Send Message</button>
+        <p id="form-status" class="form-status"></p>
+      </form>
+
+      <!-- Contact Links -->
+      <div class="contact-links reveal">
+        <div class="contact-card">
+          <img src="email.png" alt="Email icon" class="icon" />
+          <a href="mailto:jyotisingh110405@gmail.com">jyotisingh110405@gmail.com</a>
+        </div>
+        <div class="contact-card">
+          <img src="linkedin.png" alt="LinkedIn icon" class="icon" />
+          <a href="https://www.linkedin.com/in/jyotikumari1109/">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">Jyoti Kumari</div>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <p class="footer-copyright">Copyright &#169; 2025 Jyoti Kumari. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="btn btn-primary" title="Go to top">↑</button>
+
+  <script src="script.js?v=1.0.1"></script>
+</body>
+
+</html>
